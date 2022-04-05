@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WhatToCook</title>
+    <title>WhatToCook.</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,16 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless request.path == '/' %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+
+    <div class="footer">
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

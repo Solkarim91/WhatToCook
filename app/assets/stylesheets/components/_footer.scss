@@ -1,0 +1,25 @@
+.footer {
+  height: 10vh;
+  background-color: #375560;
+  border-top: 1px solid rgba(0, 0, 0, 0.205);
+  bottom:0;
+  width:100%;
+}
+
+ul#footer-list li {
+  display:inline;
+  color: rgb(78, 78, 78);
+  font-size: 30px;
+  margin: 10px;
+  color: white;
+}
+
+#footer-list {
+  text-align: center;
+  margin-top: 20px;
+  padding: 0px;
+}
+
+ul#footer-list li:hover {
+  color: #ff9900;
+}
