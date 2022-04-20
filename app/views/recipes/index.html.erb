@@ -1,4 +1,32 @@
 <!-- app/views/recipes/index.html.erb -->
+<div class="banner">
+  <h1>RECIPES</h1>
+</div>
+
+<div class="index-div">
+  <div class="container-index-cards">
+    <div class="container-grid">
+      <% @recipes.each do |recipe| %>
+        <div class="card-product">
+          <div>
+          <%= link_to class: "link" do %>
+            <% if recipe.photo.attached? %>
+              <%= cl_image_tag recipe.photo.key, class: "card-img-top", width: 600 %>
+            <%else   %>
+              <%= image_tag('macaw.jpg', draggable: "true", class: "card-img-top") %>
+            <% end %>
+          </div>
+          <div class="card-product-infos">
+            <h2><%=recipe.name.capitalize%></h2>
+            <p><%= recipe.duration %></p>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
 <%# <div class="container"> %>
   <%# <div class="row"> %>
     <%# <div class="col-lg-12 mt-5"> %>
