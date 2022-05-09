@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
       flash[:alert] = 'No recipes found!'
       return render action: :index
     end
-    @recipes = recipes.first(5)
+    @recipes = JSON.parse(recipes)
   end
 
   private
