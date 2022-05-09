@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
   end
 
   def search
-    ingredients = params[:ingredients]
+    @ingredients = []
+    @ingredients.push(params[:ingredients])
     recipes = find_recipes
     unless recipes
       flash[:alert] = 'No recipes found!'
@@ -19,14 +20,11 @@ class RecipesController < ApplicationController
     response = URI.open(url,
       'Content-Type' => 'application/json').read
     p response
-    # puts response.read
-
-    # JSON.parse
   end
 
   def find_recipes
     request_api(
-      "https://api.spoonacular.com/recipes/findByIngredients?apiKey=#{ENV['SPOONACULAR_API_KEY']}&ingredients=onion"
+      "https://api.spoonacular.com/recipes/findByIngredients?apiKey=#{ENV['SPOONACULAR_API_KEY']}&ingredients=#{@ingredients.length == 1 ? @ingredients.first : @ingredients.join(",+")}"
     )
   end
 end
