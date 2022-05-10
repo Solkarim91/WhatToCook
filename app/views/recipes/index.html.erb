@@ -1,48 +1,9 @@
-<!-- app/views/recipes/index.html.erb -->
-<div class="banner">
-  <h1>RECIPES</h1>
-</div>
-
-<div class="index-div">
-  <div class="container-index-cards">
-    <div class="container-grid">
-      <% @recipes.each do |recipe| %>
-        <div class="card-product">
-          <div>
-          <%= link_to class: "link" do %>
-            <% if recipe.photo.attached? %>
-              <%= cl_image_tag recipe.photo.key, class: "card-img-top", width: 600 %>
-            <%else   %>
-              <%= image_tag('macaw.jpg', draggable: "true", class: "card-img-top") %>
-            <% end %>
-          </div>
-          <div class="card-product-infos">
-            <h2><%=recipe.name.capitalize%></h2>
-            <p><%= recipe.duration %></p>
-          </div>
-          <% end %>
-        </div>
-      <% end %>
+<h2 class="page-title">Your search returned the following recipes:</h2>
+<div class="recipe-cards-container">
+  <% @recipes.first(15).each do |recipe| %>
+    <div class="card-product col-lg-4">
+      <img src="<%= recipe['image']%>" alt="#" class="card-img">
+      <h6><%= recipe['title'].capitalize %></h6>
     </div>
-  </div>
-
-
-<%# <div class="container"> %>
-  <%# <div class="row"> %>
-    <%# <div class="col-lg-12 mt-5"> %>
-      <%# <% if flash[:alert] %>
-        <%# <div class="alert al  ert-warning"><%= flash[:alert] %>
-        <%# </div> %>
-      <%# <% end %>
-      <%# <div class="mx-auto mt-5" style="width: 400px"> %>
-        <%# <%= form_with(url: search_path, method: 'get', local: true) do %>
-          <%# <div class="form-group">
-            <%= label_tag :ingredients, 'Search for a recipe based on the ingredients you have: '%>
-            <%# <%= text_field_tag :ingredients, nil, placeholder: 'Eg. Onion, Carrot, Chorizo', class: 'form-control' %>
-          <%# </div> %>
-          <%# <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
-        <%# <% end %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# </div>
-</div> %>
+  <% end %>
+</div>
