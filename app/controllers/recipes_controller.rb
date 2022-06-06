@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :destroy]
+  # before_action :find_recipes, only: [:index, :find_recipe]
 
   def index
     @ingredients = []
@@ -10,6 +11,10 @@ class RecipesController < ApplicationController
       return render action: :index
     end
     @recipes = JSON.parse(recipes)
+  end
+
+  def new
+    @recipe = Recipe.new
   end
 
   def show
@@ -25,7 +30,7 @@ class RecipesController < ApplicationController
   def request_api(url)
     response = URI.open(url,
       'Content-Type' => 'application/json').read
-    p response
+    # p response
   end
 
   def find_recipes
@@ -35,6 +40,9 @@ class RecipesController < ApplicationController
   end
 
   def find_recipe
-    @recipe = Recipe.find(params[:id])
+    @ingredients = []
+    @ingredients.push(params[:ingredients])
+    recipes = find_recipes
+    @recipes = JSON.parse(recipes)
   end
 end

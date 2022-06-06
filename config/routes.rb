@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # get 'my_search', to: 'recipes#index'
-  # get '/search' => 'travel#search'
   resources :recipes
-  get '/search' => 'recipes#index'
+  get 'search', to: 'recipes#index'
   get 'my_recipes', to: 'recipes#my_recipes'
-
-  # get '/search' => 'recipes#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
