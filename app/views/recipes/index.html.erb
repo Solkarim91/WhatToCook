@@ -2,7 +2,7 @@
 <div class="recipe-cards-container">
   <% @recipes.first(8).each do |recipe| %>
     <div class="card-product col-lg-4">
-      <%= link_to recipe do %>
+      <%= link_to recipe_path(recipe['id']) do %>
         <img src="<%= recipe['image']%>" alt="#" class="card-img">
         <h6><%= recipe['title'].capitalize %></h6>
       <% end %>

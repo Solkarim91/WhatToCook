@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
     @recipes = JSON.parse(recipes)
   end
 
+  # def new
+  #   @recipe = Recipe.new
+  # end
+
   def show
   end
 
@@ -25,7 +29,6 @@ class RecipesController < ApplicationController
   def request_api(url)
     response = URI.open(url,
       'Content-Type' => 'application/json').read
-    p response
   end
 
   def find_recipes
@@ -35,6 +38,9 @@ class RecipesController < ApplicationController
   end
 
   def find_recipe
-    @recipe = Recipe.find(params[:id])
+    recipe = request_api(
+      "https://api.spoonacular.com/recipes/#{params['id']}/information?apiKey=#{ENV['SPOONACULAR_API_KEY']}"
+    )
+    @recipe = JSON.parse(recipe)
   end
 end
