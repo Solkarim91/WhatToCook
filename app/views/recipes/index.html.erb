@@ -1,9 +1,11 @@
 <h2 class="page-title">Your search returned the following recipes:</h2>
 <div class="recipe-cards-container">
-  <% @recipes.first(15).each do |recipe| %>
+  <% @recipes.first(8).each do |recipe| %>
     <div class="card-product col-lg-4">
-      <img src="<%= recipe['image']%>" alt="#" class="card-img">
-      <h6><%= recipe['title'].capitalize %></h6>
+      <%= link_to recipe do %>
+        <img src="<%= recipe['image']%>" alt="#" class="card-img">
+        <h6><%= recipe['title'].capitalize %></h6>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # get 'my_search', to: 'recipes#index'
   # get '/search' => 'travel#search'
-  get '/index' => 'recipes#index'
+  resources :recipes
+  get '/search' => 'recipes#index'
   get 'my_recipes', to: 'recipes#my_recipes'
 
   # get '/search' => 'recipes#search'
