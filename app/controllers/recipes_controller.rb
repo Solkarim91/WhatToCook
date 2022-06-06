@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :find_recipe, only: [:show, :destroy]
+
   def index
     @ingredients = []
     @ingredients.push(params[:ingredients])
@@ -8,6 +10,14 @@ class RecipesController < ApplicationController
       return render action: :index
     end
     @recipes = JSON.parse(recipes)
+  end
+
+  def show
+  end
+
+  def destroy
+    @recipe.destroy
+    redirect_to my_recipes_path
   end
 
   private
@@ -22,5 +32,9 @@ class RecipesController < ApplicationController
     request_api(
       "https://api.spoonacular.com/recipes/findByIngredients?apiKey=#{ENV['SPOONACULAR_API_KEY']}&ingredients=#{@ingredients.length == 1 ? @ingredients.first : @ingredients.join(",+")}"
     )
+  end
+
+  def find_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end
