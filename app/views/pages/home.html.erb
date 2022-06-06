@@ -8,7 +8,7 @@
       </div>
     <% end %>
     <div class="mx-auto" style="width: 400px; margin-top: 100px;">
-      <%= form_with(url: index_path, method: 'get', local: true) do %>
+      <%= form_with(url: search_path, method: 'get', local: true) do %>
         <div class="form-group">
           <%= label_tag :ingredients, 'Search for a recipe based on your ingredients: ', class: 'mb-2', style: 'font-size: 20px;' %>
           <div class="submit-bar d-flex">
