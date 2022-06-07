@@ -1,1 +1,14 @@
-<h1><%= @recipe['title'] %></h1>
+<h1 class="show-h1"><%= @recipe['title'] %></h1>
+<div class="show-container d-flex">
+  <div class="left-container">
+    <img src="<%= @recipe['image']%>" alt="#" class="show-img">
+    <h2>Ingredients:</h2>
+    <% @recipe['extendedIngredients'].each do |ingredient| %>
+      <p><%= ingredient['original'] %></p>
+    <% end %>
+  </div>
+  <div class="right-container">
+    <h2>Method:</h2>
+    <p><%= @recipe['instructions'].gsub(".", '.<br/>').html_safe %></p>
+  </div>
+</div>
