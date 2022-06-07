@@ -42,5 +42,6 @@ class RecipesController < ApplicationController
       "https://api.spoonacular.com/recipes/#{params['id']}/information?apiKey=#{ENV['SPOONACULAR_API_KEY']}"
     )
     @recipe = JSON.parse(recipe)
+    # @recipe_instructions = @recipe['instructions'].split('.')
   end
 end
