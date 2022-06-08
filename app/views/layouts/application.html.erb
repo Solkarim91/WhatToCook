@@ -13,14 +13,16 @@
   </head>
 
   <body>
-    <% unless request.path == '/' %>
-      <%= render 'shared/navbar' %>
-    <% end %>
+    <div class="wrapper">
+      <% unless request.path == '/' %>
+        <%= render 'shared/navbar' %>
+      <% end %>
 
-    <%= render 'shared/flashes' %>
+      <%= render 'shared/flashes' %>
 
-    <%= yield %>
-
+      <%= yield %>
+      <div class="push"></div>
+    </div>
     <div class="footer">
       <%= render 'shared/footer' %>
     </div>
