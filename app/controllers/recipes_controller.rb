@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
 
   def show
     @bookmark = Bookmark.new
+    # @recipe = Recipe.new
   end
 
   def destroy
