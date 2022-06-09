@@ -1,4 +1,19 @@
 <h1 class="show-h1"><%= @recipe['title'] %></h1>
+
+<%# <% recipe = Recipe.new %>
+<%# <% recipe.name = @recipe['title'] %>
+<%# <% recipe.duration = @recipe['title'] %>
+<%# <% recipe.method = @recipe['instructions'].gsub(".", '.<br/>').html_safe %>
+<%# <% recipe.ingredients = @recipe['extendedIngredients'] %>
+<%# <% recipe.image = @recipe['image'] %>
+
+<%# ADD TO MY RECIPES %>
+<div style='width: 100%; text-align: center;'>
+  <%= simple_form_for [ @saved_recipe, @bookmark ] do |f| %>
+    <button name="button" type="submit" class="btn" style='border: 1px solid black; padding: 10px;'>add</button>
+  <% end %>
+</div>
+
 <div class="show-container d-flex">
   <div class="left-container">
     <img src="<%= @recipe['image']%>" alt="#" class="show-img">
