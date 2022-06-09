@@ -2,6 +2,10 @@ class BookmarksController < ApplicationController
   before_action :find_recipe, only: :create
   before_action :find_bookmark, only: :destroy
 
+  def index
+    @bookmarks = Bookmark.where(user: current_user)
+  end
+
   def create
     @bookmark = Bookmark.new
     # @recipe = Crypto.find(params[:crypto_id]) < CHANGE IF NECESSARY AS COPIED FROM CRYPTAUL
