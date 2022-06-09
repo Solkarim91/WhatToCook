@@ -1,1 +1,13 @@
 TEST_MY_RECIPES
+
+<h2 class="page-title">Saved Recipes:</h2>
+<div class="recipe-cards-container">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card-product col-lg-4">
+      <%= link_to recipe_path(bookmark.recipe['id']) do %>
+        <img src="<%= bookmark.recipe['image']%>" alt="#" class="card-img">
+        <h6><%= bookmark.recipe['title'].capitalize %></h6>
+      <% end %>
+    </div>
+  <% end %>
+</div>
